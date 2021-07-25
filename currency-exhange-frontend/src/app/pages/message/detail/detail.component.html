@@ -1,0 +1,51 @@
+
+
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Exchange rate</h5>
+          <form>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">{{valueCodeCurrencyOrigin}}</label>
+                <select class="form-select" id="inputGroupSelect01" (change)="changeCurrencyOrigin(codeCurrencyOrigin.value)"  #codeCurrencyOrigin>
+                    <option selected value=null class="d-none" >Choose currency</option>
+                    <option *ngFor="let item of currencyList" value={{item.currencyCode}}>{{item.currencyName}}</option>
+               
+                </select>
+              </div>
+
+              
+
+              <div class="form-floating mb-2">
+                <input class="form-control" id="subject" name="amount" placeholder="amount" type="number" [(ngModel)]="operationCurrency.amount">
+                <label for="floatingPassword">Amount</label>
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">{{valueCodeCurrencyDestiny}}</label>
+                <select class="form-select" id="inputGroupSelect01" (change)="changeCurrencyDestiny(codeCurrencyDestiny.value)"  #codeCurrencyDestiny>
+                    <option selected value=null class="d-none" >Convert to</option>
+                    <option *ngFor="let item of currencyDestinyList" value={{item.currencyCode}}>{{item.currencyName}}</option>                   
+                </select>
+              </div>
+
+              
+              
+              <div class="form-floating mb-2">
+                <input class="form-control" id="subject" name="exchangeValue" placeholder="exchangeValue" type="number"   [(ngModel)]="operationCurrency.exchangeValue" disabled >
+                <label for="floatingPassword">Exchange Value</label>
+            </div>
+
+
+            <div class="form-floating mb-2">
+                <input disabled class="form-control" id="amountExchange" name="amountExchange" placeholder="Exchange amount" type="number" [(ngModel)]="operationCurrency.amountExchange">
+                <label for="floatingPassword">Exchange amount</label>
+            </div>
+
+
+            <div class="form-floating mb-2">
+                <button  (click)="doOperation()" type="button" class="btn btn-primary ml-3" >Save</button>        
+            </div>
+        </form>
+        </div>
+    </div>
+    

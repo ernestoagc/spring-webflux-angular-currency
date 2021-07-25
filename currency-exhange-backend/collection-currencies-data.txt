@@ -1,0 +1,36 @@
+var newdata =[
+{
+	"currencyCode": "USD",
+	"currencyName": "Dolares Americanos",
+	"exchangeRates":
+	[
+		{"currencyCode": "PEN", "currencyName": "Nuevo sol",  "exchangeValue":3.8},
+		{"currencyCode": "CAD", "currencyName": "Dolar canadiense",  "exchangeValue":1.21}
+		
+	]
+	
+},
+
+{
+	"currencyCode": "PEN",
+	"currencyName": "Nuevo sol",
+	"exchangeRates":
+	[
+		{"currencyCode": "USD", "currencyName": "Dolar Americano", "exchangeValue":0.4},
+		{"currencyCode": "EUR", "currencyName": "Euro", "exchangeValue":0.3}
+	]
+	
+},
+{
+	"currencyCode": "CAD",
+	"currencyName": "Dolar canadiense",
+	"exchangeRates":
+	[
+		{"currencyCode": "USD", "currencyName": "Dolar Americano", "exchangeValue":0.826}
+		
+	]
+	
+}
+];
+
+db.currencies.insert(newdata);

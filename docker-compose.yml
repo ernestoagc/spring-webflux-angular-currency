@@ -1,0 +1,47 @@
+version: '3.5'
+services:
+
+  dbCurrencyTest:  
+    container_name: dbCurrencyTest
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"    
+    networks:
+      - currency
+      
+  currency-backend:
+    restart: on-failure
+    container_name: currency-backend
+    build: ./currency-exhange-backend/
+    depends_on:
+      - dbCurrencyTest
+    expose:
+      - "7500"
+    ports:
+      - 7500:7500
+    environment:
+      spring.profiles.active: test 
+    links:
+      - dbCurrencyTest
+    networks:
+      - currency
+      
+  currency-frontend:
+    restart: on-failure
+    container_name: currency-frontend
+    build: ./currency-exhange-frontend/
+    depends_on:
+      - currency-backend
+    expose:
+      - "80"
+    ports:
+      - 8084:80
+    links:
+      - currency-backend
+    networks:
+      - currency  
+
+networks:
+  currency:
+    name: currency-net 
